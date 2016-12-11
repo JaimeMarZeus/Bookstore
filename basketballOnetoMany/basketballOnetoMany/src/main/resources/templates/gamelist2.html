@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <title>BULLS Schedule</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    
+    <!--Styling script is used in this page instead of injecting CSS
+	<I created multiple pages with different designs,>
+	<and i decided to write the design this way cause this way makes it easier for me to edit the page--> 
+    
+<style>
+
+    body {
+		background-position: center;
+		background-attachment: fixed;
+		text-align:center;
+		background-image: url("img/bulls.jpeg"); 
+	}
+    
+    #header {
+    	background-color:black;
+    	color:red;
+    	text-align:center;
+    	padding:20px;
+    	opacity: 0.5;
+   	 	filter: alpha(opacity=50);
+   	 	font-size: 40px;
+    	font-weight: bold;
+    	border-radius:25px;    
+    }
+
+	table {
+    	font-family: arial, sans-serif;
+    	text-align:center;
+    	border-collapse: collapse;
+    	width: 100%;
+    	color:red;
+	}
+	
+	td, th {
+    	border: 1px solid #dddddd;
+    	text-align: left;
+    	padding: 8px;   
+	}
+	
+	tr:nth-child(even) {
+    	background-color: black;
+	}
+
+</style>
+
+</head>
+
+<body>
+	<div id="header">
+	<a th:inline="text"> "Welcome [[${#httpServletRequest.remoteUser}]]" </a>
+	</div>	
+	
+<br/>
+<br/>
+	
+
+
+<table>	
+		<tr>
+		    <th>DATE</th>
+		    <th>TIME</th>
+		    <th>GAME</th>
+		    <th>LOCATION</th>
+		    <th>PRICE</th>
+		    <th>TV CHANNEL</th>  
+		</tr>  
+		
+    		<tr th:each="book2 : ${books2}">
+    		<td th:text="${book2.date2}"></td> 
+    		<td th:text="${book2.time2}"></td>
+    		<td th:text="${book2.game2} "></td>
+    		<td th:text="${book2.place2}"></td>
+    		<td th:text="${book2.price2}"></td>
+    		<td th:text="${book2.category2.name2}"></td> 		
+ 			<td><a sec:authorize="hasAuthority('ADMIN')" th:href="@{/delete2/{id2}(id2=${book2.id2})}">DELETE</a></td>    		
+    	</tr>
+</table> 
+
+<br/>
+     
+	
+
+ 
+	 	<form sec:authorize="hasAuthority('ADMIN')" th:action="@{/add2}" method="post">
+			<input type="submit" value="Add Schedule" class="btn btn-danger"/>	
+		</form>
+	 
+	 
+	 	<form th:action="@{/list}" method="post">
+			<input type="submit" value="Back" class="btn btn-danger"/>	
+		</form>
+ 
+		<form th:action="@{/logout}" method="post">
+			<input type="submit" value="Sign Out" class="btn btn-danger"/>	
+		</form>
+		
+	
+</body>
+</html>

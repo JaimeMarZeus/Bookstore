@@ -1,0 +1,113 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Knicks</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    
+    <!--Styling script is used in this page instead of injecting CSS
+	<I created multiple pages with different designs,>
+	<and i decided to write the design this way cause this way makes it easier for me to edit the page--> 
+	
+<style>
+
+  body {
+	background-position: center;
+	background-attachment: fixed;
+	text-align:center;
+	background-image: url("img/ny.jpg"); 
+	font-weight: bold;
+	color:orange;
+	font-size: 30px;
+	opacity: 0.5;
+    filter: alpha(opacity=50);	
+	}
+
+ #back{
+ 	width: 650px;
+ 	height:650px;
+ 	background-color:black;
+	margin-right:auto;
+	margin-left:auto;
+	border-radius:25px;
+ 	}
+    
+    #header {
+    background-color:black;
+    color:red;
+    text-align:center;
+    padding:20px;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+    font-size: 40px;
+    font-weight: bold;
+    }
+    
+	input[type=text] {
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    background-color: #009999;
+    color: white;
+    border-radius:25px;
+	}
+
+    input[type=password] {
+   padding: 12px 20px;
+   margin: 8px 0;
+   box-sizing: border-box;
+   border: none;
+   background-color: black;
+   color: white;
+   border-radius:25px;
+	}
+
+</style>
+
+</head>
+
+<body>
+<div id="header">
+	ADD SCHEDULE
+</div>
+	<div>
+	<div id ="back"><br/>
+		<form th:object="${book}" th:action="@{save}" action="#" method="post">
+		  	<label for="bname">Date <br/></label>
+			<input type="text" id="bname" th:field="*{date}" />
+			
+			<div style="clear: both; display: block; height: 10px;"></div>
+		  	<label for="aname">Time <br/></label>
+			<input type="text" id="aname" th:field="*{time}" />
+			
+			<div style="clear: both; display: block; height: 10px;"></div>
+		  	<label for="year">Game <br/></label>
+			<input type="text" id="game" th:field="*{game}" />
+			
+			<div style="clear: both; display: block; height: 10px;"></div>
+		  	<label for="isbn">Location <br/></label>
+			<input type="text" id="place" th:field="*{place}" />
+			
+			<div style="clear: both; display: block; height: 10px;"></div>
+		  	<label for="price">Price <br/></label>
+			<input type="text" id="price" th:field="*{price}" />
+			
+			<div style="clear: both; display: block; height: 10px;"></div>						
+		  	<label for="catlist">TV Channel:</label>
+			 <select id="catlist" th:field="*{category}" class="form-control">
+       			<option th:each="category: ${category}" th:value="${category.categoryid}" th:text="${category.name}"></option>
+    		</select>
+    		
+		
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<input type="submit" value="Save"></input>
+			</form>
+			
+			<form th:action="@{/gamelist}" method="post">
+			<input type="submit" value="Back" class="btn btn-danger"/>	
+			</form></div>
+		
+		   
+	</div>
+</body>
+</html>

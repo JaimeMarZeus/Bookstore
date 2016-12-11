@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+        <title>TEAMS</title>
+           <style>
+    body {
+	
+	background-position: center;
+	background-attachment: fixed;
+	text-align:center;
+	background-image: url("img/login.jpg"); 
+	font-weight: bold;
+	color:black;
+	font-size: 30px;
+
+}
+	#header {
+   background-color:black;
+    color:#009999;
+    text-align:center;
+    padding:20px;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+    font-size: 40px;
+    font-weight: bold;
+    border-radius:25px;
+    
+    }
+    a:link, a:visited {
+    background-color: Black;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius:25px;
+    
+}
+
+
+	a:hover, a:active {
+    background-color: #009999;
+}
+
+    
+	</style>
+    </head>
+    
+    <body>
+    <div id="header">
+	
+	<a th:inline="text"> Welcome [[${#httpServletRequest.remoteUser}]] </a><br/>
+	"CHOOSE TEAM"
+</div><br/><br/><br/>
+     <div> 
+     	<a th:href="@{/calendar}">CALENDAR</a><br/><br/>
+     	<a th:href="@{/fed}">EASY SEARCH</a><br/><br/>
+     	<a th:href="@{/sched}">SCHEDULE GAMES</a><br/><br/>
+     	<a th:href="@{/gamelist2}">CHICAGO BULLS</a><br/><br/>
+        <a th:href="@{/gamelist}">NEW YORK KNICKS</a><br/><br/>
+        <a th:href="@{/gamelist1}">LOS ANGELES LAKERS</a><br/><br/>
+        
+       
+       
+        <form th:action="@{/logout}" method="post">
+			<input type="submit" value="Sign Out" class="btn btn-danger"/>	
+		</form>
+		
+		
+       </div>
+    </body>
+</html>

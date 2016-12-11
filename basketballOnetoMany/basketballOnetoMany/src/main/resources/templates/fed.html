@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<style>
+	body {
+	background-image: url("img/log.jpg"); 
+	background-position: center;
+	background-attachment: fixed;	
+}
+	table {   
+    color:red;
+}
+</style>
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Angular Sort and Filter</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootswatch/3.2.0/sandstone/bootstrap.min.css"/>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"/>
+    <style>
+        body { padding-top:50px; }
+    </style>
+
+    <!-- JS -->
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+    <script src="script/app.js"></script>
+
+</head>
+<body>
+<div class="container" ng-app="sortApp" ng-controller="mainController">
+  
+  
+  
+   <form>
+    	<div class="form-group">
+    		<div class="input-group">
+    			<div class="input-group-addon"><i class="fa fa-search"></i></div>
+        		<input type="text" class="form-control" placeholder="Search Fixtures" ng-model="searchFixtures"/> 
+        	</div>      
+    	</div>
+  </form>
+  
+  <table class="table table-bordered table-striped">
+    
+	<thead>
+	      <tr>
+	        <td>
+	          <a href="#" ng-click="sortType = 'date'; sortReverse = !sortReverse"> Date 
+	            <span ng-show="sortType == 'date' &amp;&amp; !sortReverse" class="fa fa-caret-down"></span>
+	        	<span ng-show="sortType == 'date' &amp;&amp; sortReverse" class="fa fa-caret-up"></span>
+	       		</a>
+	        </td>
+	        
+	    	<td>
+	          <a href="#" ng-click="sortType = 'time'; sortReverse = !sortReverse"> Time
+	            <span ng-show="sortType == 'time' &amp;&amp; !sortReverse" class="fa fa-caret-down"></span>
+	            <span ng-show="sortType == 'time' &amp;&amp; sortReverse" class="fa fa-caret-up"></span>
+	          </a>
+	        </td>
+	        
+	    	<td>
+	          <a href="#" ng-click="sortType = 'fixture'; sortReverse = !sortReverse">Fixture
+	            <span ng-show="sortType == 'fixture' &amp;&amp; !sortReverse" class="fa fa-caret-down"></span>
+	            <span ng-show="sortType == 'fixture' &amp;&amp; sortReverse" class="fa fa-caret-up"></span>
+	          </a>
+	        </td>
+	        
+			<td>
+	          <a href="#" ng-click="sortType = 'location'; sortReverse = !sortReverse"> Location
+	            <span ng-show="sortType == 'location' &amp;&amp; !sortReverse" class="fa fa-caret-down"></span>
+	            <span ng-show="sortType == 'location' &amp;&amp; sortReverse" class="fa fa-caret-up"></span>
+	          </a>
+	        </td>
+	        
+	    	<td>
+	          <a href="#" ng-click="sortType = 'price'; sortReverse = !sortReverse"> Price
+	            <span ng-show="sortType == 'price' &amp;&amp; !sortReverse" class="fa fa-caret-down"></span>
+	            <span ng-show="sortType == 'price' &amp;&amp; sortReverse" class="fa fa-caret-up"></span>
+	          </a>
+	        </td>
+	        
+			<td>
+	          <a href="#" ng-click="sortType = 'network'; sortReverse = !sortReverse">  Network
+	            <span ng-show="sortType == 'network' &amp;&amp; !sortReverse" class="fa fa-caret-down"></span>
+	            <span ng-show="sortType == 'network' &amp;&amp; sortReverse" class="fa fa-caret-up"></span>
+	          </a>
+	        </td>
+	         
+	      </tr>
+	    </thead>
+	    
+	    <tbody>
+	        <tr ng-repeat="game in timetable | orderBy:sortType:sortReverse | filter:searchFixtures">
+	        <td>{{ game.date }}</td>
+	        <td>{{ game.time }}</td>
+	        <td>{{ game.fixture }}</td>
+	        <td>{{ game.location }}</td>
+	        <td>{{ game.price }}</td>
+	        <td>{{ game.network }}</td>
+	      </tr>
+	    </tbody>
+    
+  </table>
+  <form th:action="@{/list}" method="post">
+			<input type="submit" value="Back" class="btn btn-danger"/>	
+		</form>
+  
+</div>
+</body>
+</html>

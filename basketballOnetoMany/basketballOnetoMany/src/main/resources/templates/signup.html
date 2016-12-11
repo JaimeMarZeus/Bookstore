@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Knicks</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<style>
+    body {
+	
+	background-position: center;
+	background-attachment: fixed;
+	text-align:center;
+	background-image: url("img/log.jpg"); 
+	font-weight: bold;
+	color:black;
+	font-size: 30px;
+		
+}
+	#header {
+    background-color:black;
+    color:#009999;
+    text-align:center;
+    padding:40px;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+    font-size: 40px;
+    font-weight: bold;
+    
+    }
+    
+    input[type=text] {
+
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    background-color: black;
+    color: white;
+    border-radius:25px;
+}
+
+    input[type=password] {
+
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    background-color: black;
+    color: white;
+    border-radius:25px;
+}
+	</style>
+	
+</head>
+<body>
+<div id="header">
+
+	SIGN-UP
+	</div>
+     <div class="col-md-4">
+		<form th:object="${signupform}" th:action="@{/saveuser}" action="#" method="post">
+			<div>
+				<label> Username <br/><input type="text" th:field="*{username}" class="form-control"/></label>
+				<p th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username Error</p>	
+			</div>
+			<div>
+				<label> Password <br/><input type="password" th:field="*{password}" class="form-control"/></label>
+				<p th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</p>	
+			</div>
+			<div>
+				<label> Re-type Password <br/><input type="password" th:field="*{passwordCheck}" class="form-control"/></label>
+				<p th:if="${#fields.hasErrors('passwordCheck')}" th:errors="*{passwordCheck}">Password Match Error</p>	
+			</div>
+			<br/>
+			<input type="submit" class="btn btn-success" value="Signup"></input>		
+		</form>
+		<form th:action="@{/login}" method="post">
+			<input type="submit" value="Back" class="btn btn-danger"/>	
+		</form>
+		
+		
+	</div>
+	
+	
+</body>
+</html>

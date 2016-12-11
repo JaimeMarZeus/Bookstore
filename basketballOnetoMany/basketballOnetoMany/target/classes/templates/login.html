@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+        <title>NBA</title>
+           <style>
+           
+    body {
+	
+	background-position: center;
+	background-attachment: fixed;
+	text-align:center;
+	background-image: url("img/log.jpg"); 
+	font-weight: bold;
+	color:black;
+	font-size: 30px;
+		
+}
+	#header {
+    background-color:black;
+    color:#009999;
+    text-align:center;
+    padding:30px;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+    font-size: 40px;
+    font-weight: bold;
+    border-radius:25px;
+    
+    }
+    
+    input[type=text] {
+
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    background-color: black;
+    color: white;
+    border-radius:25px;
+}
+
+    input[type=password] {
+
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    background-color: black;
+    color: white;
+    border-radius:25px;
+}
+     a:link, a:visited {
+    background-color: #009999;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius:25px;
+    
+}
+
+
+	a:hover, a:active {
+    background-color: red;
+}
+	
+	</style>
+    </head>
+    
+    <body>
+    <div id="header">
+	NATIONAL BASKETBALL ASSOCIATION SCHEDULE
+	</div>
+	<br/><br/><br/>
+	
+     <div class="col-md-4 col-md-offset-4">
+        <div class="alert alert-danger" th:if="${param.error}">
+          INVALID USERNAME AND PASSWORD
+        </div>
+        <div class="alert alert-warning" th:if="${param.logout}">
+            YOU HAVE BEEN LOG OUT
+        </div>
+        <form th:action="@{/login}" method="post">
+            <div><label> USERNAME <br/><input type="text" name="username" class="form-control" value="ENTER USERNAME"/></label></div>
+            <div><label> PASSWORD <br/><input type="password" name="password" class="form-control" value="PASSWORDPASSWORD"/> </label></div>
+            <div><input type="submit" value="Sign In" class="btn btn-success"/></div>
+        </form><br/><br/><br/>
+       
+		
+		<a th:href="@{/signup}">New User Sign Up!!</a><br/><br/>
+      
+       </div>
+    </body>
+</html>

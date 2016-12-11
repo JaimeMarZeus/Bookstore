@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+<style>
+
+     body {
+	background-image: url("img/log.jpg"); 
+	background-position: center;
+	background-attachment: fixed;	
+}
+     article {
+	text-align:center;
+	color:white;
+	font-size: 20px;	
+}
+
+</style>
+
+    <title>Drag and Drop</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootswatch/3.2.0/sandstone/bootstrap.min.css"/>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"/>
+
+    <script src="script/JavaScript.js"></script> 
+</head>
+<body>
+    <header>
+    </header>
+
+    <article>
+    
+        <h2>Schedule a game</h2>
+        
+
+        <h3>Available games</h3>
+        
+        <ul id="workDayList" class="draggableAndDroppable" 
+            dropzone="workDayListDropZone" ondragover="preventDefaultBehaviour(event)" ondragstart="drag(event)" ondrop="drop(event)">
+            <li draggable="true">Toronto Raptors vs. New York Knicks | December 05,2016	|10.30 PM</li>
+            <li draggable="true">New York Knicks vs. Los Angeles Lakers | December 10,2016	|10.30 PM</li>
+            <li draggable="true">Detroit Pistons vs. New York Knicks | November 01,2016	|07.30 PM</li>
+            <li draggable="true">New York Knicks vs. Houston Rockets | November 02,2016	|07.30 PM</li>
+            <li draggable="true">Chicago Bulls vs. New York Knicks | November 04,2016	|10.30 PM</li>
+            <li draggable="true">New York Knicks vs. Utah Jazz | November 06,2016	|10.30 PM</li>
+            <li draggable="true">New York Knicks vs. Utah Jazz | November 06,2016	|10.30 PM</li>
+            
+        </ul>
+
+        <h3>My Schedule games</h3>
+        <ul id="freeDayList" class="draggableAndDroppable" 
+            dropzone="freeDayListDropZone" ondragover="preventDefaultBehaviour(event)" ondragstart="drag(event)" ondrop="drop(event)" >
+            <li draggable="true">New York Knicks vs. Brooklyn Nets | November 09,2016	|05.30 PM</li>
+            <li draggable="true">Boston Celtics vs. New York Knicks | November 11,2016 |09.00 PM</li>
+            
+        </ul>
+    </article><br/><br/>
+
+  <form th:action="@{/list}" method="post">
+			<input type="submit" value="Back" class="btn btn-danger"/>	
+		</form>
+
+</body>
+</html>
